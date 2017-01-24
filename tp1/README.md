@@ -35,3 +35,15 @@ PMD Report: Sert à trouver le code mort
 
 4) Activité du projet
 
+Ajouter le plugin maven-changelog-plugin dans la section reporting:
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-changelog-plugin</artifactId>
+</plugin>
+
+Mettre une connection:
+
+<scm>
+	<connection>scm:git://github.com/thojeremy/M1_Miage_SIR</connection>
+	<url>http://github.com/thojeremy/M1_Miage_SIR</url>
+</scm>

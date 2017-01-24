@@ -1,0 +1,7 @@
+INDEX VERSION 1.129+H:\Documents\M1\S2\M1_Miage_SIR\.metadata\.plugins\org.eclipse.jdt.core
+2642361598.index
+344950780.index
+4260111049.index
+2374424134.index
+3284743331.index
+212244815.index

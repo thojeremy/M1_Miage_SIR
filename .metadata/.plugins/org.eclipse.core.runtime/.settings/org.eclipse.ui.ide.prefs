@@ -1,5 +1,9 @@
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
+<<<<<<< HEAD
 platformState=1484748961846
+=======
+platformState=1484032201984
+>>>>>>> refs/remotes/origin/master
 quickStart=false
 tipsAndTricks=true

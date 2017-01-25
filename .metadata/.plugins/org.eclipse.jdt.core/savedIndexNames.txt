@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+INDEX VERSION 1.129+H:\Documents\M1\S2\M1_Miage_SIR\.metadata\.plugins\org.eclipse.jdt.core
+2642361598.index
+344950780.index
+4260111049.index
+2374424134.index
+3284743331.index
+212244815.index
+=======
 INDEX VERSION 1.129+C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\.metadata\.plugins\org.eclipse.jdt.core
 969619830.index
 2831536327.index
@@ -31,4 +40,8 @@ INDEX VERSION 1.129+C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\.metad
 2374424134.index
 3119455041.index
 2927524569.index
+<<<<<<< HEAD
 188619105.index
+=======
+>>>>>>> bd908c09c2a7e150d0e9be206c285c6a548673eb
+>>>>>>> refs/remotes/origin/master

@@ -1,10 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
-<<<<<<< HEAD
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1484749255808">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1484749255808" name\="jre1.8.0_111" path\="C\:\\Program Files\\Java\\jre1.8.0_111"/>\r\n</vmType>\r\n</vmSettings>\r\n
-=======
-<<<<<<< HEAD
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1483698964398" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1483698964398" name\="jdk" path\="C\:\\Program Files (x86)\\Java\\jdk1.8.0_45"/>\r\n</vmType>\r\n</vmSettings>\r\n
-=======
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1484749255808">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1484749255808" javadocURL\="https\://docs.oracle.com/javase/8/docs/api/" name\="jre1.8.0_111" path\="C\:\\Program Files\\Java\\jre1.8.0_111"/>\r\n</vmType>\r\n</vmSettings>\r\n
->>>>>>> bd908c09c2a7e150d0e9be206c285c6a548673eb
->>>>>>> refs/remotes/origin/master
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1485339479006" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1485339479006" name\="jre1.8.0_121" path\="C\:\\Program Files\\Java\\jre1.8.0_121"/>\r\n</vmType>\r\n</vmSettings>\r\n

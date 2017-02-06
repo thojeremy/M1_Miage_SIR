@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <qualifiedTypeNameHistroy/>
-=======
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaQuery"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-<fullyQualifiedTypeName name="org.hibernate.ejb.EntityManagerImpl"/>
-</qualifiedTypeNameHistroy>
->>>>>>> refs/remotes/origin/master

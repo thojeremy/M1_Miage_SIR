@@ -21,6 +21,11 @@ public class Home {
 	@Transient
 	private Person person;
 	
+	public Home(){
+		size = rooms = 0;
+		person = null;
+	}
+	
 	public Home(int size, int rooms, Person person){
 		this.size = size;
 		this.rooms = rooms;

@@ -15,6 +15,11 @@ public class ElectronicDevice {
 	@Transient
 	private Person person;
 	
+	public ElectronicDevice(){
+		consumption = 0;
+		person = null;
+	}
+	
 	public ElectronicDevice(int consumption, Person person){
 		this.consumption = consumption;
 		

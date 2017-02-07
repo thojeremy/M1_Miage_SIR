@@ -13,6 +13,10 @@ public class Heater {
 	@Transient
 	private Home home;
 	
+	public Heater(){
+		home = null;
+	}
+	
 	public Heater(Home home){
 		this.home = home;
 	}

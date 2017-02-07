@@ -1,0 +1,37 @@
+package tp4;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import domain.Person;
+import jpa.Jpa;
+
+@WebServlet(name="infosbdd", urlPatterns={"/infosbdd"})
+public class InfosBdd extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Jpa jpa = Jpa.getInstance();
+		PrintWriter p = new PrintWriter(resp.getOutputStream());
+
+		p.print("<h1>Personnes</h1>");
+		p.print("<table>");
+		p.print("<tr><td>ID</td><td>Mail</td><td>Nom</td><td>Prénom</td></tr>");
+		
+		List<Person> l = jpa.query("SELECT id FROM Person");
+		for(int i = 0; i < l.size(); i++){
+			p.print("<td>" + l.get(i).getId() + "</td>");
+			p.print("<td>" + l.get(i).getMail() + "</td>");
+			p.print("<td>" + l.get(i).getNom() + "</td>");
+			p.print("<td>" + l.get(i).getPrenom() + "</td>");
+		}
+		
+		p.flush();
+	}
+}

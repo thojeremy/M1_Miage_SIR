@@ -1,0 +1,9 @@
+package tp4;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(name="infosbdd", urlPatterns={"infosbdd"})
+public class InfosBdd extends HttpServlet {
+
+}

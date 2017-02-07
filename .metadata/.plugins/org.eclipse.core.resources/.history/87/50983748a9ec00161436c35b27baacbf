@@ -1,0 +1,6 @@
+package tp4;
+
+@WebServlet(name="infosbdd", urlPatterns={"infosbdd"})
+public class InfosBdd extends HttpServlet {
+
+}

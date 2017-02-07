@@ -1,0 +1,114 @@
+package tp4;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import domain.ElectronicDevice;
+import domain.Heater;
+import domain.Home;
+import domain.Person;
+import jpa.Jpa;
+
+@WebServlet(name="infosbdd", urlPatterns={"/infosbdd"})
+public class InfosBdd extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		afficherBdd(resp.getOutputStream());
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		
+		String content = (String)req.getAttribute("content");
+		
+		afficherBdd(resp.getOutputStream());
+	}
+	
+	private void afficherBdd(OutputStream out){
+		Jpa jpa = Jpa.getInstance();
+		PrintWriter p = new PrintWriter(out);
+
+		// Affichage de la liste de toutes les personnes
+		p.print("<h1>Personnes</h1>");
+		p.print("<table>");
+		p.print("<tr><td>ID</td><td>Mail</td><td>Nom</td><td>Prénom</td></tr>");
+		
+		List<Person> lp = jpa.query("from Person");
+		for(int i = 0; i < lp.size(); i++){
+			p.print("<tr>");
+			
+			p.print("<td>" + lp.get(i).getId() + "</td>");
+			p.print("<td>" + lp.get(i).getMail() + "</td>");
+			p.print("<td>" + lp.get(i).getNom() + "</td>");
+			p.print("<td>" + lp.get(i).getPrenom() + "</td>");
+			
+			p.print("</tr>");
+		}
+		p.print("</table>");
+		
+		// Affichage de la liste des ElectronicDevice
+		List<ElectronicDevice> led = jpa.query("from ElectronicDevice");
+		p.print("<h1>Electronic Devices</h1>");
+		p.print("<table>");
+		p.print("<tr><td>ID</td><td>Consumption</td><td>Person_id</td></tr>");
+		
+		for(int i = 0; i < led.size(); i++){
+			p.print("<tr>");
+			
+			p.print("<td>" + led.get(i).getId() + "</td>");
+			p.print("<td>" + led.get(i).getConsumption() + "</td>");
+			p.print("<td>" + led.get(i).getPerson() + "</td>");
+			
+			p.print("</tr>");
+		}
+		
+		p.print("</table>");
+		
+		// Affichage des Home
+		List<Home> lho = jpa.query("from Home");
+		p.print("<h1>Home</h1>");
+		p.print("<table>");
+		p.print("<tr><td>ID</td><td>rooms</td><td>size</td><td>person_id</td></tr>");
+		
+		for(int i = 0; i < lho.size(); i++){
+			p.print("<tr>");
+			
+			p.print("<td>" + lho.get(i).getId() + "</td>");
+			p.print("<td>" + lho.get(i).getRooms() + "</td>");
+			p.print("<td>" + lho.get(i).getSize() + "</td>");
+			p.print("<td>" + lho.get(i).getPerson() + "</td>");
+			
+			p.print("</tr>");
+		}
+		
+		p.print("</table>");
+		
+		// Affichage des Heater
+		List<Heater> lhe = jpa.query("from Heater");
+		p.print("<h1>Heater</h1>");
+		p.print("<table>");
+		p.print("<tr><td>ID</td><td>Home_ID</td></tr>");
+		
+		for(int i = 0; i < lhe.size(); i++){
+			p.print("<tr>");
+			
+			p.print("<td>" + lhe.get(i).getId() + "</td>");
+			p.print("<td>" + lhe.get(i).getHome() + "</td>");
+			
+			p.print("</tr>");
+		}
+		
+		p.print("</table>");
+		
+		p.flush();
+	}
+}

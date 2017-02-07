@@ -4,6 +4,41 @@
 	</head>
 	
 	<body>
-		.: Scanning :.
+		<h1>Ajout Person</h1>
+		<form method="POST" action="infosbdd">
+			<input type="text" name="mail" 		placeholder="Email" />
+			<input type="text" name="nom"		placeholder="Nom" />
+			<input type="text" name="prenom"	placeholder="Prénom" />
+			
+			<input type="hidden" name="content" value="person" />
+			<input type="submit" 				value="Sauvegarder Person" />
+		</form>
+		
+		<h1>Ajout Heater</h1>
+		<form method="POST" action="infosbdd">
+			<input type="number" name="home_id" placeholder="Home ID" />
+			
+			<input type="hidden" name="content" value="heater" />
+			<input type="submit" 				value="Sauvegarder l'Heater" />
+		</form>
+		
+		<h1>Ajout Home</h1>
+		<form method="POST" action="infosbdd">
+			<input type="number" name="rooms" 		placeholder="Rooms" />
+			<input type="number" name="size" 		placeholder="Size" />
+			<input type="number" name="person_id" 	placeholder="Person ID" />
+			
+			<input type="hidden" name="content" value="home" />
+			<input type="submit"				value="Sauvegarder l'Home" />
+		</form>
+		
+		<h1>Ajout ElectricDevice</h1>
+		<form method="POST" action="infosbdd">
+			<input type="number" name="consumption"	placeholder="Consumption" />
+			<input type="number" name="person_id"	placeholder="Person ID" />
+			
+			<input type="hidden" name="content" value="ed" />
+			<input type="submit"				value="Sauvegarder l'ED" />
+		</form>
 	</body>
 </html>

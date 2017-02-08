@@ -15,7 +15,7 @@ function DnD(canvas, interactor) {
 		this.yInit = pos['y'];
 		
 		if(interactor !== undefined){
-			interactor.onInteractionStart(this);
+			interactor.onInteractionStart(this.xInit, this.yInit, this.x, this.y);
 		}
 	};
 	
@@ -25,7 +25,7 @@ function DnD(canvas, interactor) {
 		this.y = pos['y'];
 		
 		if(interactor !== undefined){
-			interactor.onInteractionUpdate(this);
+			interactor.onInteractionUpdate(this.xInit, this.yInit, this.x, this.y);
 		}
 	};
 	
@@ -35,18 +35,30 @@ function DnD(canvas, interactor) {
 		this.y = pos['y'];
 		
 		if(interactor !== undefined){
-			interactor.onInteractionEnd(this);
+			interactor.onInteractionEnd(this.xInit, this.yInit, this.x, this.y);
 		}
 	};
 	
 	this.getXinit = function(){
 		return this.xInit;
-	}
+	};
+	
+	this.getYinit = function(){
+		return this.yInit;
+	};
+	
+	this.getX = function(){
+		return this.x;
+	};
+	
+	this.getY = function(){
+		return this.y;
+	};
 	
 	// Associer les fonctions précédentes aux évènements du canvas.
-	canvas.addEventListener("click", 	this.drag, 		false);
-	canvas.addEventListener("hover", 	this.dragging, 	false);
-	canvas.addEventListener("mouseUp", 	this.drop, 		false);
+	canvas.addEventListener("mousedown", 	this.drag, 		false);
+	canvas.addEventListener("mousemove", 	this.dragging, 	false);
+	canvas.addEventListener("mouseup", 		this.drop, 		false);
 };
 
 

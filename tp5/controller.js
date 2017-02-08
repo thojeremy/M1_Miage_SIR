@@ -14,24 +14,31 @@ function Pencil(ctx, drawing, canvas) {
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 	
 	// onInteractionStart
-	this.onInteractionStart = function(dnd){
-		
-		var shape = (this.currentShape == editingMode.line ? 
-						new Line(x0,y0,x1,y1,this.currLineWidth,this.currColour)
-						:
-						new Rectangle(x0,y0,x1,y1,this.currLineWidth,this.currColour));
-		drawing.addForm(shape);
-		drawing.paint(ctx);
+	this.onInteractionStart = function(x0, y0, x1, y1){
 	};
 	
 	// onInteractionUpdate
-	this.onInteractionUpdate = function(dnd){
-		
+	this.onInteractionUpdate = function(x0, y0, x1, y1){
 	};
 	
 	// onInteractionEnd
-	this.onInteractionEnd = function(dnd){
-		
+	this.onInteractionEnd = function(x0, y0, x1, y1){
+		var shape = (this.currentShape == editingMode.line ? 
+						new Line(	x0,
+									x0,
+									x1,
+									y1,
+									this.currLineWidth,
+									this.currColour)
+						:
+						new Rectangle(	x0,
+										x0,
+										x1,
+										y1,
+										this.currLineWidth,
+										this.currColour));
+		drawing.addForm(shape);
+		drawing.paint(ctx);
 	};
 };
 

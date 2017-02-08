@@ -2,7 +2,7 @@
 <<<<<<<=HEAD
 >>>>>>>=bd908c09c2a7e150d0e9be206c285c6a548673eb
 content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.recommenders.calls.rcp.proposalCategory.templates\u0000org.eclipse.mylyn.java.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.recommenders.chain.rcp.proposalCategory.chain\u0000
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="javax.persistence.EntityManager"><rhs name\="org.hibernate.ejb.EntityManagerImpl"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="javax.persistence.EntityManager"><rhs name\="org.hibernate.ejb.EntityManagerImpl"/></lhs><lhs name\="domain.ElectronicDevice"><rhs name\="domain.ElectronicDevice"/></lhs></history>
 content_assist_number_of_computers=19
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0

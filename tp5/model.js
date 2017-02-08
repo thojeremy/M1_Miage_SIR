@@ -4,7 +4,7 @@
 
 // Classe Drawing
 var Drawing = function(){
-	var forms = new Array();
+	this.forms = new Array();
 	
 	this.addForm = function(form){
 		this.forms.push(form);
@@ -47,7 +47,7 @@ var Rectangle = function(x0, y0, x1, y1, lineWidth, color){
 	this.x0 = x0;
 	this.y0 = y0;
 	this.x1 = x1;
-	this.y1 = y1;alert(x0);
+	this.y1 = y1;
 	
 	this.color = color;
 	this.lineWidth = lineWidth;
@@ -74,7 +74,7 @@ var Line = function(x0, y0, x1, y1, lineWidth, color){
 	this.x0 = x0;
 	this.y0 = y0;
 	this.x1 = x1;
-	this.y1 = y1;alert(x0);
+	this.y1 = y1;
 	
 	this.color = color;
 	this.lineWidth = lineWidth;

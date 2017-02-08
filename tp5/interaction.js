@@ -11,15 +11,37 @@ function DnD(canvas, interactor) {
 	// Developper les 3 fonctions gérant les événements
 	this.drag = function(evt, x, y){
 		var pos = getMousePosition(canvas, evt);
+		this.xInit = pos['x'];
+		this.yInit = pos['y'];
+		
+		if(interactor !== undefined){
+			interactor.onInteractionStart(this);
+		}
 	};
 	
 	this.dragging = function(evt, x, y){
 		var pos = getMousePosition(canvas, evt);
+		this.x = pos['x'];
+		this.y = pos['y'];
+		
+		if(interactor !== undefined){
+			interactor.onInteractionUpdate(this);
+		}
 	};
 	
 	this.drop = function(evt, x, y){
 		var pos = getMousePosition(canvas, evt);
+		this.x = pos['x'];
+		this.y = pos['y'];
+		
+		if(interactor !== undefined){
+			interactor.onInteractionEnd(this);
+		}
 	};
+	
+	this.getXinit = function(){
+		return this.xInit;
+	}
 	
 	// Associer les fonctions précédentes aux évènements du canvas.
 	canvas.addEventListener("click", 	this.drag, 		false);

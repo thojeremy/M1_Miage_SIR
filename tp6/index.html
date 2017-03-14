@@ -14,36 +14,86 @@
 
   		<!-- Search -->
   		<div ng-controller="Controller">
-        <table>
-          <tr>
-            <td>
-              <input  id="pid"
-                      type="text"
-                      placeholder="PokéID"
-                      ng-model="id"/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input  id="pname"
-                      type="text"
-                      placeholder="PokéNom"
-                      ng-model="name" />
-            </td>
-            <td>
-              <select id="pselect">
-                <option ng-repeat="(id, value) in liste | filter: name"
-                        value={{id}}>{{value}}</option>
-              </select>
-            </td>
-            <td>
-              <input type="button" value={{buttonValue}} ng-click="go()" />
-            </td>
-          </tr>
-      </div>
-
-  		<!-- Pokémon information -->
-  		<div></div>
+			<table>
+				<tr>
+					<td>
+						<input  id="pid"
+								type="text"
+								placeholder="PokéID"
+								class="form-control"
+								ng-model="id"/>
+					</td>
+			    </tr>
+				<tr>
+					<td>
+						<input  id="pname"
+								type="text"
+								placeholder="PokéNom"
+								class="form-control"
+								ng-model="name" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select id="pselect" class="form-control">
+							<option ng-repeat="(id, value) in liste | filter: name | filter: id"
+								value={{id}}>{{value}}</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" class="btn btn-primary" value={{buttonGetValue}} 	ng-click="go()" />
+					</td>
+				  </tr>
+			</table>
+			  
+			<!-- Pokémon information -->
+			<h1>{{pkmnName}}</h1>
+			
+			<p><b>Abilities</b></p>
+			<ul>
+				<li ng-repeat="(id, value) in abilities">{{value}}</li>
+			</ul>
+			
+			<p><b>Type(s)</b></p>
+			<ul>
+				<li ng-repeat="(id, value) in types">{{value}}</li>
+			</ul>
+			
+			<p><b>Specificities</b></p>
+			<table class="table table-striped">
+				<tr>
+					<td>Attack</td>
+					<td>Defense</td>
+					<td>Sp_atk</td>
+					<td>Sp_def</td>
+					<td>Speed</td>
+					<td>Height</td>
+				</tr>
+				
+				<tr>
+					<td>{{attack}}</td>
+					<td>{{defense}}</td>
+					<td>{{sp_atk}}</td>
+					<td>{{sp_def}}</td>
+					<td>{{speed}}</td>
+					<td>{{height}}</td>
+				</tr>
+			</table>
+			
+			<p><b>Moves</b></p>
+			<table class="table table-striped">
+				<tr>
+					<td>Learn Type</td>
+					<td>Name</td>
+				</tr>
+				<tr ng-repeat="(move_name, move_learn_type) in moveset">
+					<td>{{move_learn_type}}</td>
+					<td>{{move_name}}</td>
+				</tr>
+			</table>
+        </div>
 
   	</div>
 

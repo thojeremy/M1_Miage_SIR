@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.ElectronicDevice;
-import domain.Heater;
+import domain.IntelligentElectronicDevice;
+import domain.IntelligentHeater;
 import domain.Home;
 import domain.Person;
 import jpa.Jpa;
@@ -54,7 +54,7 @@ public class InfosBdd extends HttpServlet {
 			case "heater":
 				try{
 					List<Home> a = jpa.query("from Home where id=" + req.getParameter("home_id"));
-					Heater he = new Heater(a.get(0));
+					IntelligentHeater he = new IntelligentHeater(a.get(0));
 					
 					jpa.getManager().persist(he);
 				} catch(Exception e){
@@ -80,7 +80,7 @@ public class InfosBdd extends HttpServlet {
 			case "ed":
 				try{
 					List<Person> a = jpa.query("from Person where id=" + req.getParameter("person_id"));
-					ElectronicDevice ed = new ElectronicDevice(Integer.parseInt(req.getParameter("consumption")), a.get(0));
+					IntelligentElectronicDevice ed = new IntelligentElectronicDevice(Integer.parseInt(req.getParameter("consumption")), a.get(0));
 					
 					jpa.getManager().persist(ed);
 				} catch(Exception e){
@@ -118,7 +118,7 @@ public class InfosBdd extends HttpServlet {
 		p.print("</table>");
 		
 		// Affichage de la liste des ElectronicDevice
-		List<ElectronicDevice> led = jpa.query("from ElectronicDevice");
+		List<IntelligentElectronicDevice> led = jpa.query("from ElectronicDevice");
 		p.print("<h1>Electronic Devices</h1>");
 		p.print("<table>");
 		p.print("<tr><td>ID</td><td>Consumption</td><td>Person_id</td></tr>");
@@ -155,7 +155,7 @@ public class InfosBdd extends HttpServlet {
 		p.print("</table>");
 		
 		// Affichage des Heater
-		List<Heater> lhe = jpa.query("from Heater");
+		List<IntelligentHeater> lhe = jpa.query("from Heater");
 		p.print("<h1>Heater</h1>");
 		p.print("<table>");
 		p.print("<tr><td>ID</td><td>Home_ID</td></tr>");

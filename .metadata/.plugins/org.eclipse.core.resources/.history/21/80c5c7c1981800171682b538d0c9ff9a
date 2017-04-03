@@ -1,0 +1,10 @@
+package domain;
+
+public class IntelligentElectronicDevice extends ElectronicDevice{
+
+	public IntelligentElectronicDevice(int consumption, Person person) {
+		super(consumption, person);
+		// TODO Auto-generated constructor stub
+	}
+
+}

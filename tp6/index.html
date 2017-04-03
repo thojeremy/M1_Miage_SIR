@@ -44,12 +44,20 @@
 				<tr>
 					<td>
 						<input type="button" class="btn btn-primary" value={{buttonGetValue}} 	ng-click="go()" />
+						<input type="button" class="btn btn-warning" value={{buttonResetValue}} ng-click="reset()" />
 					</td>
 				  </tr>
 			</table>
 			  
 			<!-- Pokémon information -->
 			<h1>{{pkmnName}}</h1>
+			
+			<center><img ng-src="{{srcImg}}" style="max-width:150px"/></center>
+			
+			<br/><br/>
+			
+			<p><b>Description</b></p>
+			<p>{{description}}</p>
 			
 			<p><b>Abilities</b></p>
 			<ul>
@@ -64,12 +72,12 @@
 			<p><b>Specificities</b></p>
 			<table class="table table-striped">
 				<tr>
-					<td>Attack</td>
-					<td>Defense</td>
-					<td>Sp_atk</td>
-					<td>Sp_def</td>
-					<td>Speed</td>
-					<td>Height</td>
+					<th>Attack</th>
+					<th>Defense</th>
+					<th>Sp_atk</th>
+					<th>Sp_def</th>
+					<th>Speed</th>
+					<th>Height</th>
 				</tr>
 				
 				<tr>
@@ -85,8 +93,8 @@
 			<p><b>Moves</b></p>
 			<table class="table table-striped">
 				<tr>
-					<td>Learn Type</td>
-					<td>Name</td>
+					<th>Learn Type</th>
+					<th>Name</th>
 				</tr>
 				<tr ng-repeat="(move_name, move_learn_type) in moveset">
 					<td>{{move_learn_type}}</td>

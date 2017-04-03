@@ -1,0 +1,10 @@
+package domain;
+
+public class Tamer extends ElectronicDevice{
+
+	public Tamer(int consumption, Person person) {
+		super(consumption, person);
+		// TODO Auto-generated constructor stub
+	}
+
+}

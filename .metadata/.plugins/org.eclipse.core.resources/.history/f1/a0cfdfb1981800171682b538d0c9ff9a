@@ -1,0 +1,10 @@
+package domain;
+
+public class IntelligentTamer extends IntelligentHeater{
+
+	public IntelligentTamer(Home home) {
+		super(home);
+		// TODO Auto-generated constructor stub
+	}
+
+}

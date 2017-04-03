@@ -17,7 +17,10 @@ pokeApp.factory('ChargementInfosPkmn', ['$resource', 'POKEAPI', function($resour
 
 pokeApp.controller(	'Controller', 
 					['$scope', '$log', 'ChargementPkmn', 'ChargementInfosPkmn', function(
-																					$scope, $log, ChargementPkmn, ChargementInfosPkmn
+																					$scope, 
+																					$log, 
+																					ChargementPkmn, 
+																					ChargementInfosPkmn
 																				){
   // Names
   $scope.id 	= "";
@@ -25,6 +28,7 @@ pokeApp.controller(	'Controller',
   
   // For the informations
   $scope.pkmnName 			= "Select a pokemon and hit [Get]";
+  $scope.srcImg				= "http://vignette3.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807";
   $scope.abilities			= ["--"];
   $scope.types				= ["--"];
   $scope.moveset			= {"--": "--"};
@@ -36,27 +40,63 @@ pokeApp.controller(	'Controller',
   $scope.height				= "--";
   $scope.move_learn_type	= "--";
   $scope.move_name			= "--";
+  $scope.description		= "--";
   
-  $scope.buttonGetValue = "Get";
-  $scope.buttonSearchValue = "Search in pokedex";
+  $scope.buttonGetValue 	= "Get";
+  $scope.buttonResetValue 	= "Reset";
+  
+  // Reset
+  $scope.reset = function(){
+	  $scope.name 	= "";
+	  $scope.id		= "";
+  }
 
   // Select
   $scope.go = function(){
 	// Gets the html list
     var list = document.getElementById("pselect");
-
+	
+	// Tries if there is something selected in the <select>
+	if(list.options[list.selectedIndex] == undefined){
+		alert("Please select something!");
+		return;
+	}
+	
+	// Sets the image src to the loader image
+	$scope.srcImg = "img/load.gif";
+	
 	// Gets the name and the id
-    var pname = list.options[list.selectedIndex].text;
-    var pid = list.options[list.selectedIndex].value;
+	var slct 	= list.options[list.selectedIndex].text.split(" - ");
 
 	// Changes the name and the id
-    $scope.id = Number(pid) + 1;
-    $scope.name = pname.split(" - ")[1];
+    $scope.id 	= slct[0];
+    $scope.name = slct[1];
 	
 	// Gets the moveset, etc..
 	var infos = ChargementInfosPkmn.get({uri: $scope.liste_uri[$scope.id]}, function(){
 		// The name
 		$scope.pkmnName = infos["name"];
+		
+		// The image
+		try{
+			var uriImg = infos["sprites"][0]["resource_uri"].replace('/', '');
+			
+			var xhrImg = ChargementInfosPkmn.get({uri: uriImg}, function(){
+				// C'est bizarre, ça marche une fois sur deux.
+				$scope.srcImg = "http://pokeapi.co/" + xhrImg["image"];
+			});
+		} catch(e){
+		}
+		
+		// The description
+		try{
+			var uriDesc = infos["descriptions"][0]["resource_uri"].replace('/', '');
+			
+			var xhrDesc = ChargementInfosPkmn.get({uri: uriDesc}, function(){
+				$scope.description = xhrDesc["description"];
+			});
+		} catch(e){
+		}
 		
 		// The abilities
 		$scope.abilities = [];

@@ -17,7 +17,7 @@ public class Home {
 
 	private int size, rooms;
 	@Transient
-	private List<IntelligentHeater> heaters;
+	private List<Heater> heaters;
 	@Transient
 	private Person person;
 	
@@ -31,7 +31,7 @@ public class Home {
 		this.rooms = rooms;
 		this.person = person;
 		
-		heaters = new ArrayList<IntelligentHeater>();
+		heaters = new ArrayList<Heater>();
 	}
 	
 	public int getSize() {
@@ -55,11 +55,11 @@ public class Home {
 	}
 
 	@OneToMany(mappedBy="home", cascade=CascadeType.PERSIST)
-	public List<IntelligentHeater> getHeaters() {
+	public List<Heater> getHeaters() {
 		return heaters;
 	}
 
-	public Home setHeaters(List<IntelligentHeater> heaters) {
+	public Home setHeaters(List<Heater> heaters) {
 		this.heaters = heaters;
 		
 		return this;

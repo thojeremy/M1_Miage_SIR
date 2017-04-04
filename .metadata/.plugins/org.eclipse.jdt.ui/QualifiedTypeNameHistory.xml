@@ -23,4 +23,6 @@
 <fullyQualifiedTypeName name="javax.ws.rs.FormParam"/>
 <fullyQualifiedTypeName name="jpa.Jpa"/>
 <fullyQualifiedTypeName name="domain.ElectronicDevice"/>
+<fullyQualifiedTypeName name="domain.IntelligentHeater"/>
+<fullyQualifiedTypeName name="domain.IntelligentElectronicDevice"/>
 </qualifiedTypeNameHistroy>

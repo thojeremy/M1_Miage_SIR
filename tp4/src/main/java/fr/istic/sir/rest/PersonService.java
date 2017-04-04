@@ -1,7 +1,5 @@
 package fr.istic.sir.rest;
 
-import java.io.PrintWriter;
-
 import javax.persistence.EntityTransaction;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;

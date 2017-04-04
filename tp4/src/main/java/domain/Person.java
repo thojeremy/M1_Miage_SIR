@@ -21,7 +21,7 @@ public class Person {
 	@Transient
 	private List<Person> friends;
 	@Transient
-	private List<IntelligentElectronicDevice> devices;
+	private List<ElectronicDevice> devices;
 	
 	public Person(String nom, String prenom, String mail){
 		this.nom = nom;
@@ -30,7 +30,7 @@ public class Person {
 		
 		homes = new ArrayList<Home>();
 		friends = new ArrayList<Person>();
-		devices = new ArrayList<IntelligentElectronicDevice>();
+		devices = new ArrayList<ElectronicDevice>();
 	}
 	
 	public Person(){
@@ -38,7 +38,7 @@ public class Person {
 		
 		homes = new ArrayList<Home>();
 		friends = new ArrayList<Person>();
-		devices = new ArrayList<IntelligentElectronicDevice>();
+		devices = new ArrayList<ElectronicDevice>();
 	}
 
 	@Id
@@ -104,11 +104,11 @@ public class Person {
 	}
 
 	@OneToMany(mappedBy="person", cascade=CascadeType.PERSIST)
-	public List<IntelligentElectronicDevice> getDevices() {
+	public List<ElectronicDevice> getDevices() {
 		return devices;
 	}
 
-	public Person setDevices(List<IntelligentElectronicDevice> devices) {
+	public Person setDevices(List<ElectronicDevice> devices) {
 		this.devices = devices;
 		
 		return this;

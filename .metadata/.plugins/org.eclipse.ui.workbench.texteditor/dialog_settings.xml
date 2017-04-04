@@ -2,17 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="hbm2" key="selection"/>
+		<item value="afficherBdd" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="afficherBdd"/>
+			<item value="doGet"/>
+			<item value="source"/>
+			<item value="junit"/>
 			<item value="hbm2"/>
 			<item value="noSuch"/>
 			<item value="site"/>
 			<item value="maven-site"/>
-			<item value="compiler"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -3,7 +3,6 @@ package tp4;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
@@ -13,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.IntelligentElectronicDevice;
-import domain.IntelligentHeater;
+import domain.ElectronicDevice;
+import domain.Heater;
 import domain.Home;
 import domain.Person;
 import jpa.Jpa;
@@ -40,30 +39,25 @@ public class InfosBdd extends HttpServlet {
 		
 		tx.begin();
 		
-		switch(content){
-			case "person":
-				Person p = new Person();
-				
-				p.setMail(req.getParameter("mail"))
-				.setPrenom(req.getParameter("prenom"))
-				.setNom(req.getParameter("nom"));
-				
-				jpa.getManager().persist(p);
-			break;
+		if(content.equals("person")){
+			Person p = new Person();
 			
-			case "heater":
-				try{
-					List<Home> a = jpa.query("from Home where id=" + req.getParameter("home_id"));
-					IntelligentHeater he = new IntelligentHeater(a.get(0));
-					
-					jpa.getManager().persist(he);
-				} catch(Exception e){
-					pw.print("Erreur dans l'écriture de la ligne");
-					pw.flush();
-				}
-			break;
+			p.setMail(req.getParameter("mail"))
+			.setPrenom(req.getParameter("prenom"))
+			.setNom(req.getParameter("nom"));
 			
-			case "home":
+			jpa.getManager().persist(p);
+		} else if(content.equals("heater")){
+			try{
+				List<Home> a = jpa.query("from Home where id=" + req.getParameter("home_id"));
+				Heater he = new Heater(a.get(0));
+				
+				jpa.getManager().persist(he);
+			} catch(Exception e){
+				pw.print("Erreur dans l'écriture de la ligne");
+				pw.flush();
+			}
+		} else if(content.equals("home")){
 				try{
 					List<Person> a = jpa.query("from Person where id=" + req.getParameter("person_id"));
 					Home ho = new Home(	Integer.parseInt(req.getParameter("size")), 
@@ -75,19 +69,16 @@ public class InfosBdd extends HttpServlet {
 					pw.print("Erreur dans l'écriture de la ligne");
 					pw.flush();
 				}
-			break;
-			
-			case "ed":
-				try{
-					List<Person> a = jpa.query("from Person where id=" + req.getParameter("person_id"));
-					IntelligentElectronicDevice ed = new IntelligentElectronicDevice(Integer.parseInt(req.getParameter("consumption")), a.get(0));
-					
-					jpa.getManager().persist(ed);
-				} catch(Exception e){
-					pw.print("Erreur dans l'écriture de la ligne");
-					pw.flush();
-				}
-			break;
+		} else if(content.equals("ed")){
+			try{
+				List<Person> a = jpa.query("from Person where id=" + req.getParameter("person_id"));
+				ElectronicDevice ed = new ElectronicDevice(Integer.parseInt(req.getParameter("consumption")), a.get(0));
+				
+				jpa.getManager().persist(ed);
+			} catch(Exception e){
+				pw.print("Erreur dans l'écriture de la ligne");
+				pw.flush();
+			}
 		}
 		
 		tx.commit();
@@ -118,7 +109,7 @@ public class InfosBdd extends HttpServlet {
 		p.print("</table>");
 		
 		// Affichage de la liste des ElectronicDevice
-		List<IntelligentElectronicDevice> led = jpa.query("from ElectronicDevice");
+		List<ElectronicDevice> led = jpa.query("from ElectronicDevice");
 		p.print("<h1>Electronic Devices</h1>");
 		p.print("<table>");
 		p.print("<tr><td>ID</td><td>Consumption</td><td>Person_id</td></tr>");
@@ -155,7 +146,7 @@ public class InfosBdd extends HttpServlet {
 		p.print("</table>");
 		
 		// Affichage des Heater
-		List<IntelligentHeater> lhe = jpa.query("from Heater");
+		List<Heater> lhe = jpa.query("from Heater");
 		p.print("<h1>Heater</h1>");
 		p.print("<table>");
 		p.print("<tr><td>ID</td><td>Home_ID</td></tr>");

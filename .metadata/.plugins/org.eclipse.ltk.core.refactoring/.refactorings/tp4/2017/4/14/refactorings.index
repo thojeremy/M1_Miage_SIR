@@ -1,2 +1,5 @@
 1491244886974	Rename type 'ElectronicDevice'
 1491244897974	Rename type 'Heater'
+1491250304031	Delete elements
+1491250639118	Rename type 'IntelligentElectronicDevice'
+1491250648145	Rename type 'IntelligentHeater'

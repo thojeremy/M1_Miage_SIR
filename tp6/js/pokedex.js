@@ -68,12 +68,13 @@ pokeApp.controller(	'Controller',
   
 	$scope.buttonGetValue 		= "Get";
 	$scope.buttonResetValue 	= "Reset";
+	$scope.buttonLogValue 		= "Log";
 	
 	// Reset
 	$scope.reset = function(){
 		$scope.name 	= "";
 		$scope.id		= "";
-	}
+	};
 
 	// Select
 	$scope.go = function(){
@@ -98,7 +99,16 @@ pokeApp.controller(	'Controller',
 		
 		// Setting the pokemon's id
 		idPokemon.setId($scope.id);
-	}
+	};
+	
+	// Log
+	$scope.printLog = function(){
+		var list = document.getElementById("pselect");
+		
+		list = list.options[list.selectedIndex] == undefined ? "--" : list.options[list.selectedIndex].text;
+		
+		$log.log("Valeur sélectionnée : " + list);
+	};
 	
 	// Gets the list
 	var charge = ChargementPkmn.get(function(){
@@ -166,7 +176,7 @@ pokeApp.controller(	'Infos',
 								var uriImg = infos["sprites"][0]["resource_uri"].replace('/', '');
 								
 								var xhrImg = ChargementInfosPkmn.get({uri: uriImg}, function(){
-									// C'est bizarre, ça marche une fois sur deux.
+									// C'est bizarre, รงa marche une fois sur deux.
 									$scope.srcImg = "http://pokeapi.co/" + xhrImg["image"];
 								});
 							} catch(e){

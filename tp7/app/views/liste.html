@@ -1,0 +1,25 @@
+<h1>{{h1}}</h1>
+
+<table id="tab" class="table table-bordered table-striped" ng-controller="ListeCtrl">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="person in personnes">
+			<td>{{person.nom}}</td>
+			<td>{{person.prenom}}</td>
+			<td>{{person.mail}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<script>
+	$(document).ready(function() {
+		$('#tab').DataTable();
+	});
+</script>

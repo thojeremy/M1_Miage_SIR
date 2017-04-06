@@ -70,66 +70,65 @@ grunt.loadNpmTasks('grunt-connect-proxy');
 
     // The actual grunt server settings
     connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      proxies: [{
-//TODCHANGE
-      context: '/data-service-path', // the context of the data service
-      host: 'localhost', // wherever the data service is running
-      port: 8080 // the port that the data service is running on
-      }],
-      livereload: {
-        options: {
-          open: true,
-          middleware: function (connect) {
-            var middlewares= [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
-              connect.static(appConfig.app)
-            ];
-           middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
-	return middlewares;
-          }
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          middleware: function (connect) {
-	var middlewares = [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
-        middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
- 
-	return middlewares;
+		options: {
+			port: 9000,
+			// Change this to '0.0.0.0' to access the server from outside.
+			hostname: 'localhost',
+			livereload: 35729
+		},
+		proxies: [{
+			//TODCHANGE
+			context: '/rest/', // the context of the data service
+			host: 'localhost', // wherever the data service is running
+			port: 8080 // the port that the data service is running on
+		}],
+		livereload: {
+			options: {
+				open: true,
+				middleware: function (connect) {
+					var middlewares= [
+						connect.static('.tmp'),
+						connect().use(
+							'/bower_components',
+							connect.static('./bower_components')
+						),
+						connect().use(
+							'/app/styles',
+							connect.static('./app/styles')
+						),
+						connect.static(appConfig.app)
+					];
+					middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+					return middlewares;
+				}
+			}
+		},
+		test: {
+			options: {
+				port: 9001,
+				middleware: function (connect) {
+					var middlewares = [
+						connect.static('.tmp'),
+						connect.static('test'),
+						connect().use(
+							'/bower_components',
+							connect.static('./bower_components')
+						),
+						connect.static(appConfig.app)
+					];
+					middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
 
-          }
-        }
-      },
-      dist: {
-        options: {
-          open: true,
-          base: '<%= yeoman.dist %>'
-        }
-      }
-    },
+					return middlewares;
+				}
+			}
+		},
+		dist: {
+			options: {
+				open: true,
+				base: '<%= yeoman.dist %>'
+			}
+		}
+	},
 
     // Make sure there are no obvious mistakes
     jshint: {
@@ -483,7 +482,7 @@ grunt.loadNpmTasks('grunt-connect-proxy');
       'wiredep',
       'concurrent:server',
       'postcss:server',
-  Â Â Â Â 'configureProxies:server', // added just before connect
+	  'configureProxies:server', // added just before connect
       'connect:livereload',
       'watch'
     ]);

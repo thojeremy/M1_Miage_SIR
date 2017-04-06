@@ -1,0 +1,82 @@
+package fr.istic.sir.rest;
+
+import javax.persistence.EntityTransaction;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.sun.jersey.spi.container.ContainerRequest;
+import com.sun.jersey.spi.container.ContainerResponse;
+import com.sun.jersey.spi.container.ContainerResponseFilter;
+
+import domain.Person;
+import jpa.Jpa;
+
+@Path("/person")
+public class PersonService implements ContainerResponseFilter{
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Person getPerson() {
+		// Création de la personne..
+		Person p = new Person();
+		p.setMail("le@mail.exemple").setNom("Le").setPrenom("Test");
+		
+		// .. Qui sera affichée en JSON par l'API
+		return p;
+	}
+	
+
+	@GET
+	@Path("/jean-mich")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Person getPersonJeanMich() {
+		// Création de Jean-Mich..
+		Person p = new Person();
+		p.setMail("jean_mich@jm.fr").setNom("Jean-Mich").setPrenom("Fédussal");
+		
+		// .. Qui sera affiché en JSON par l'API
+		return p;
+	}
+	
+	@POST
+	@Path("/add")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Person add(	@FormParam("email") String email, 
+						@FormParam("nom") String nom, 
+						@FormParam("prenom") String prenom){
+		Person p = new Person(nom, prenom, email);
+		
+		// On se connecte à la BDD
+		Jpa jpa = Jpa.getInstance();
+		
+		// On déclare la transaction
+		EntityTransaction tx = jpa.getManager().getTransaction();
+		
+		// On commence la transaction
+		tx.begin();
+		
+		// On sauvegarde l'objet dans la transaction
+		jpa.getManager().persist(p);
+		
+		// On fout la transaction dans la BDD
+		tx.commit();
+		
+		// On retourne l'objet qui sera affiché en JSON
+		return p;
+	}
+
+
+	@Override
+	public ContainerResponse filter(ContainerRequest arg0, ContainerResponse cres) {
+		// Allow Cross-Origin
+		cres.getHeaders().add("Access-Control-Allow-Origin", "*");
+		cres.getHeaders().add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
+		cres.getHeaders().add("Access-Control-Allow-Credentials", "true");
+		cres.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+		cres.getHeaders().add("Access-Control-Max-Age", "1209600");
+		return null;
+	}
+}

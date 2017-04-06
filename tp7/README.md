@@ -1,3 +1,12 @@
-# TP7 - Angular JS sur votre projet et intégration avec JPA
+# jeremy
 
-https://docs.google.com/document/d/1dv3CJVP8OSk63r8KtoYjF0ByZL3VLcJ0Bjsf1opZfiA/edit#heading=h.hcsbz9i34eht
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.16.0.
+
+## Build & development
+
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.

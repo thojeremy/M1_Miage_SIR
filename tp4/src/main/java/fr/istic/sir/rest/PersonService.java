@@ -1,29 +1,49 @@
 package fr.istic.sir.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityTransaction;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.MatrixParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import domain.Person;
 import jpa.Jpa;
 
 @Path("/person")
-public class PersonService {
+public class PersonService{
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Person getPerson() {
-		// Création de la personne..
-		Person p = new Person();
-		p.setMail("le@mail.exemple").setNom("Le").setPrenom("Test");
+	public List<Person> getPerson() {
+		Jpa jpa = Jpa.getInstance();
+
+		// Chargement de la liste des personnes..
+		List<Person> lp = jpa.query("from Person");
+		List<Person> res = new ArrayList<Person>();
 		
-		// .. Qui sera affichée en JSON par l'API
-		return p;
+		for(int i = 0; i < lp.size(); i++){
+			Person p = new Person();
+			p	.setId(lp.get(i).getId())
+				.setNom(lp.get(i).getNom())
+				.setPrenom(lp.get(i).getPrenom())
+				.setMail(lp.get(i).getMail());
+			
+			res.add(p);
+		}
+		
+		// .. Qui seront affichées en JSON par l'API
+		return res;
 	}
-	
 
 	@GET
 	@Path("/jean-mich")
@@ -40,9 +60,32 @@ public class PersonService {
 	@POST
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Person add(	@FormParam("email") String email, 
-						@FormParam("nom") String nom, 
-						@FormParam("prenom") String prenom){
+	public Person add(String chaine){
+		// Valeurs par défaut
+		String nom, prenom, email;
+		nom = "--";
+		prenom = "--";
+		email = "--";
+		
+		// Parsing du JSON (paramètre chaine)
+		try {
+			// Si la chaine de caractères ne commence pas par un [ ...
+			if(chaine.charAt(0) != '['){
+				chaine = "[" + chaine + "]";
+			}
+			JSONArray jsonArray = new JSONArray(chaine);
+			if(jsonArray.length() > 0){
+				JSONObject jsonObject= jsonArray.getJSONObject(0);
+				// Remplissage des valeurs à ajouter à la personne
+				nom 	= jsonObject.getString("nom");
+				prenom 	= jsonObject.getString("prenom");
+				email 	= jsonObject.getString("email");
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Person p = new Person(nom, prenom, email);
 		
 		// On se connecte à la BDD

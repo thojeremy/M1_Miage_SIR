@@ -1,0 +1,86 @@
+package fr.istic.sir.rest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityTransaction;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.MatrixParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import domain.Person;
+import jpa.Jpa;
+
+@Path("/person")
+public class PersonService{
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Person> getPerson() {
+		Jpa jpa = Jpa.getInstance();
+
+		// Chargement de la liste des personnes..
+		List<Person> lp = jpa.query("from Person");
+		List<Person> res = new ArrayList<Person>();
+		
+		for(int i = 0; i < lp.size(); i++){
+			Person p = new Person();
+			p	.setId(lp.get(i).getId())
+				.setNom(lp.get(i).getNom())
+				.setPrenom(lp.get(i).getPrenom())
+				.setMail(lp.get(i).getMail());
+			
+			res.add(p);
+		}
+		
+		// .. Qui seront affichées en JSON par l'API
+		return res;
+	}
+
+	@GET
+	@Path("/jean-mich")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Person getPersonJeanMich() {
+		// Création de Jean-Mich..
+		Person p = new Person();
+		p.setMail("jean_mich@jm.fr").setNom("Jean-Mich").setPrenom("Fédussal");
+		
+		// .. Qui sera affiché en JSON par l'API
+		return p;
+	}
+	
+	@POST
+	@Path("/add")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Person add(	@MatrixParam("email") 	String email, 
+						@MatrixParam("nom") 	String nom, 
+						@MatrixParam("prenom") 	String prenom){
+		Person p = new Person(nom, prenom, email);
+		
+		// On se connecte à la BDD
+		Jpa jpa = Jpa.getInstance();
+		
+		// On déclare la transaction
+		EntityTransaction tx = jpa.getManager().getTransaction();
+		
+		// On commence la transaction
+		tx.begin();
+		
+		// On sauvegarde l'objet dans la transaction
+		jpa.getManager().persist(p);
+		
+		// On fout la transaction dans la BDD
+		tx.commit();
+		
+		System.out.println(	"Nom: " + p.getNom() + "\n"
+							+ "Prénom: " + p.getPrenom() + "\n"
+							+ "Mail: " + p.getMail());
+		
+		// On retourne l'objet qui sera affiché en JSON
+		return p;
+	}
+}

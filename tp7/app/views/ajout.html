@@ -1,0 +1,25 @@
+<h1>{{h1}}</h1>
+
+<form ng-controller="AjoutCtrl">
+	<h3>Adresse email</h3>
+	<input type="text" class="form-control" ng-model="person.email" placeholder="une@adresse.mail"/>
+	<p class="text-warning" ng-style="{'display':showErrorEmail}">{{errorEmail}}</p>
+	
+	<br/>
+	
+	<h3>Nom</h3>
+	<input type="text" class="form-control" ng-model="person.name" placeholder="Nom"/>
+	<p class="text-warning" ng-style="{'display':showErrorName}">{{errorName}}</p>
+	
+	<br/>
+	
+	<h3>Prénom</h3>
+	<input type="text" class="form-control" ng-model="person.surname" placeholder="Prénom"/>
+	<p class="text-warning" ng-style="{'display':showErrorSurname}">{{errorSurname}}</p>
+	
+	<br/>
+	
+	<input type="button" class="btn btn-success" value="Ajouter" ng-click="ajout()" />
+	
+	<br/><br/>
+</form>

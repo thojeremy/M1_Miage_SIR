@@ -5,14 +5,15 @@ Pour utiliser la norme de google, il faut créer le fichier de configuration de g
 comme par exemple google.xml. Enfin, il faut ajouter le plugin maven-checkstyle-plugin, lui mettre un
 tag configuration, y mettre un tag configLocation avec le nom du fichier de configuration qu'on veut.
 Dans notre cas ce sera google.xml. Cela nous donnera donc:
-<plugin>
+
+'<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-checkstyle-plugin</artifactId>
 	  <version>2.17</version>
 	  <configuration>
 			<configLocation>google.xml</configLocation>
 	  </configuration>
-</plugin>
+</plugin>'
 
 2) Le plugin JXR de maven
 

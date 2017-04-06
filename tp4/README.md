@@ -24,7 +24,7 @@ En gros, Jersey va aller chercher les classes annotées avec l'API JAX-RS dans l
 Ensuite, en fonction de ce qu'on met @GET ou @POST ça agit quand le @Path est appelé par une requête GET ou POST (verbes html).
 Et puis si on veut retourner du JSON, on met @Produces(MediaType.APPLICATION_JSON)
 
-# Explication plus en détail de la mise en place pour l'API REST et la classe Person
+# Explication plus en détail de la mise en place pour l'API JAX-RS et la récupération/ajout de personne
 
 En gros, j'ai déclaré @Path("/person") à la déclaration de la classe PersonService. Cela a permis de dire au serveur : "Quand t'as un bonhomme qui vient sur /person, par défaut tu lui balances ce que je te mettrai sans @Path et qui sera une de tes méthodes de classe. Ici, ce sera getPerson()"
 

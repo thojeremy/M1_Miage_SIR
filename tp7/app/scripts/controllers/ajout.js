@@ -27,6 +27,10 @@ angular.module('jeremyApp')
 	$scope.showErrorName	= "none";
 	$scope.showErrorSurname	= "none";
 	
+	// To know if the user is a fuckin jerk or not
+	$scope.jerk = 0;
+	$scope.MAX_JERK = 3;
+	
 	// When the user presses "Ajouter"
 	$scope.ajout = function(){
 		if(test()){
@@ -36,9 +40,15 @@ angular.module('jeremyApp')
 			add.prenom 	= $scope.person.surname;
 			
 			add.$save(function(){
+				$scope.jerk = 0;
 				// To make the page talk
 				Talk.setText("Succès, " + add["nom"] + " " + add["prenom"] + " a été ajouté dans la base de données").talk();
 			});
+			
+			// Removes the values of the person's things
+			$scope.person.email 	= "";
+			$scope.person.name		= "";
+			$scope.person.surname	= "";
 		}
 	};
 
@@ -47,25 +57,33 @@ angular.module('jeremyApp')
 		var ok = true;
 		
 		// Testing the email
-		var tmp = $scope.person.email.length > 0 ? /^.+@.+\.(.{2}|.{3})$/.test($scope.person.email) : false;
-		ok &= tmp;
-		$scope.showErrorEmail = tmp ? "none" : "block";
+		var tmpEmail = $scope.person.email.length > 0 ? /^.+@.+\.(.{2}|.{3})$/.test($scope.person.email) : false;
+		ok &= tmpEmail;
+		$scope.showErrorEmail = tmpEmail ? "none" : "block";
 		// Saying what is the error
-		Talk.setText(tmp ? "L'adresse e-mail que vous avez entré est correct!" : $scope.errorEmail).talk();
+		Talk.setText(tmpEmail ? "L'adresse e-mail que vous avez entré est correct!" : ($scope.jerk < $scope.MAX_JERK ? $scope.errorEmail : "")).talk();
 		
 		// Testing the name
-		var tmp = $scope.person.name.length > 0;
-		ok &= tmp;
-		$scope.showErrorName = tmp ? "none" : "block";
+		var tmpName = $scope.person.name.length > 0;
+		ok &= tmpName;
+		$scope.showErrorName = tmpName ? "none" : "block";
 		// Saying what is the error
-		Talk.setText(tmp ? "Le nom que vous avez entré est correct!" : $scope.errorName).talk();
+		Talk.setText(	tmpName ? 	( $scope.person.name.toLowerCase() == "ma bite" ? "Non, je ne pense pas que ta bite est assez grande mon bichon. Prends donc du sirop de Cordom!" : "Le nom que vous avez entré est correct!") 
+									: ($scope.jerk < $scope.MAX_JERK ? $scope.errorName : "")).talk();
 		
 		// Testing the surname
-		var tmp = $scope.person.surname.length > 0;
-		ok &= tmp;
-		$scope.showErrorSurname = tmp ? "none" : "block";
+		var tmpSurname = $scope.person.surname.length > 0;
+		ok &= tmpSurname;
+		$scope.showErrorSurname = tmpSurname ? "none" : "block";
 		// Saying what is the error
-		Talk.setText(tmp ? "Le prénom que vous avez entré est correct!" : $scope.errorSurname).talk();
+		Talk.setText(	tmpSurname ? ( 	$scope.person.surname.toLowerCase() == "ma bite" ? "Non, je ne pense pas que ta bite est assez grande mon bichon. Prends donc du sirop de Cordom!" : "Le prénom que vous avez entré est correct!") 
+										: ($scope.jerk < $scope.MAX_JERK ? $scope.errorSurname : "")).talk();
+		
+		if($scope.jerk >= $scope.MAX_JERK){
+			Talk.setText("Bon, t'es con ou quoi? Remplis donc les champs comme il est demandé. Olalalala").talk();
+		}
+		
+		$scope.jerk++;
 		
 		return ok;
 	}

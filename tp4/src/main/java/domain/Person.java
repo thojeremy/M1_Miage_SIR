@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Person {
 	private Long id;
@@ -81,6 +83,7 @@ public class Person {
 		return this;
 	}
 
+	@JsonIgnore
 	@OneToMany(mappedBy="person", cascade=CascadeType.PERSIST)
 	public List<Home> getHomes() {
 		return homes;
@@ -103,6 +106,7 @@ public class Person {
 		return this;
 	}
 
+	@JsonIgnore
 	@OneToMany(mappedBy="person", cascade=CascadeType.PERSIST)
 	public List<ElectronicDevice> getDevices() {
 		return devices;

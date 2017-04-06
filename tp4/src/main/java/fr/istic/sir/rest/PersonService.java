@@ -29,20 +29,9 @@ public class PersonService{
 
 		// Chargement de la liste des personnes..
 		List<Person> lp = jpa.query("from Person");
-		List<Person> res = new ArrayList<Person>();
-		
-		for(int i = 0; i < lp.size(); i++){
-			Person p = new Person();
-			p	.setId(lp.get(i).getId())
-				.setNom(lp.get(i).getNom())
-				.setPrenom(lp.get(i).getPrenom())
-				.setMail(lp.get(i).getMail());
-			
-			res.add(p);
-		}
 		
 		// .. Qui seront affichées en JSON par l'API
-		return res;
+		return lp;
 	}
 
 	@GET

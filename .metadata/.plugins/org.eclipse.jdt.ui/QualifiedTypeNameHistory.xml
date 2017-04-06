@@ -27,6 +27,9 @@
 <fullyQualifiedTypeName name="domain.IntelligentElectronicDevice"/>
 <fullyQualifiedTypeName name="com.sun.jersey.spi.container.ContainerResponseFilter"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
+<fullyQualifiedTypeName name="javax.ws.rs.MatrixParam"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
+<fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 </qualifiedTypeNameHistroy>

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Home {
 	private long id;
@@ -54,6 +56,7 @@ public class Home {
 		return this;
 	}
 
+	@JsonIgnore
 	@OneToMany(mappedBy="home", cascade=CascadeType.PERSIST)
 	public List<Heater> getHeaters() {
 		return heaters;

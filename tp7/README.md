@@ -1,4 +1,4 @@
-# TP7 - AngularJS communiquant avec le TP4
+# TP7: AngularJS communiquant avec le TP4
 
 https://docs.google.com/document/d/1dv3CJVP8OSk63r8KtoYjF0ByZL3VLcJ0Bjsf1opZfiA/edit
 

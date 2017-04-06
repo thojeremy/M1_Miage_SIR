@@ -1,4 +1,6 @@
-1) Norme de codage
+# TP1: Initiation aux Systèmes d'Informations Répartis
+
+## Norme de codage
 
 La norme de codage à laquelle se réfère le rapport est : Sun
 Pour utiliser la norme de google, il faut créer le fichier de configuration de google. Lui donner un nom
@@ -15,36 +17,36 @@ Dans notre cas ce sera google.xml. Cela nous donnera donc:
 	  </configuration>
 </plugin>'
 
-2) Le plugin JXR de maven
+## Le plugin JXR de maven
 
 Le plugin JRX permet d'avoir des rapports en plus, mais en affichant le code source
 
-3) Les rapports d'erreur avec PMD
+## Les rapports d'erreur avec PMD
 
 Il faut ajouter le plugin dans le reporting pour savoir s'il y a du code dupliqué:
-<plugins>
+'<plugins>
 	<plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-pmd-plugin</artifactId>
 		<version>2.5</version>
 	</plugin>
-</plugins>
+</plugins>'
 
 Après avoir fait un mvn site, 2 nouveaux rapports sont générés:
 CPD Report: Sert à trouver le code dupliqué (Présence d'une section "Duplications"
 PMD Report: Sert à trouver le code mort
 
-4) Activité du projet
+## Activité du projet
 
 Ajouter le plugin maven-changelog-plugin dans la section reporting:
-<plugin>
+'<plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-changelog-plugin</artifactId>
-</plugin>
+</plugin>'
 
 Mettre une connection:
 
-<scm>
+'<scm>
 	<connection>scm:git://github.com/thojeremy/M1_Miage_SIR</connection>
 	<url>http://github.com/thojeremy/M1_Miage_SIR</url>
-</scm>
+</scm>'

@@ -1,4 +1,4 @@
-# TP4 - Servlet, JPA et REST
+# TP4: Servlet, JPA et REST
 
 docs.google.com/document/d/1FwMNYKXeDpCgM07ETd5hNb0qLhYRwuZXeUPf3_uAf9U/edit
 

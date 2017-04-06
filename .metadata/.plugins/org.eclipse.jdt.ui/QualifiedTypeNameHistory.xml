@@ -32,4 +32,8 @@
 <fullyQualifiedTypeName name="javax.ws.rs.MatrixParam"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONArray"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.LazyCollection"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.LazyCollectionOption"/>
+<fullyQualifiedTypeName name="javax.persistence.FetchType"/>
+<fullyQualifiedTypeName name="org.codehaus.jackson.annotate.JsonIgnore"/>
 </qualifiedTypeNameHistroy>

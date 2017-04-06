@@ -3643,3 +3643,15 @@ Caused by: java.io.FileNotFoundException: C:\Users\jérémy\Documents\Cours\M1 Mia
 2017-04-06 12:26:49,790 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2017-04-06 12:26:49,806 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2017-04-06 12:26:49,806 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\tp4\src\test\resources
+2017-04-06 15:40:30,632 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-06 15:40:30,648 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\tp1\src\main\resources
+2017-04-06 15:40:30,648 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-06 15:40:30,648 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\tp1\src\test\resources
+2017-04-06 15:40:31,306 [Worker-138] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-06 15:40:31,322 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-04-06 15:40:31,322 [Worker-138] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-06 15:40:31,322 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\tp2\src\test\resources
+2017-04-06 15:40:31,604 [Worker-138] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-06 15:40:31,606 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-06 15:40:31,608 [Worker-138] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-06 15:40:31,609 [Worker-138] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jérémy\Documents\Cours\M1 Miage\M1_Miage_SIR\tp4\src\test\resources

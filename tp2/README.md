@@ -1,4 +1,4 @@
-# Traitement d'une base de données avec JPA
+# TP2: Traitement d'une base de données avec JPA
 
 ## Sujet
 

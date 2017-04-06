@@ -8,6 +8,9 @@ https://github.com/thojeremy/M1_Miage_SIR/tree/master/tp1
 ## tp2
 https://github.com/thojeremy/M1_Miage_SIR/tree/master/tp2
 
+## tp3
+https://github.com/thojeremy/M1_Miage_SIR/tree/master/tp3
+
 ## tp4
 https://github.com/thojeremy/M1_Miage_SIR/tree/master/tp4
 

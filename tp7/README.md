@@ -1,5 +1,7 @@
 # TP7 - AngularJS communiquant avec le TP4
 
+https://docs.google.com/document/d/1dv3CJVP8OSk63r8KtoYjF0ByZL3VLcJ0Bjsf1opZfiA/edit
+
 Lien vers le TP4 : https://github.com/thojeremy/M1_Miage_SIR/tree/master/tp4
 
 ## Démarrage du tp

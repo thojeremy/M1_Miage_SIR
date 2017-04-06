@@ -4,7 +4,9 @@ https://docs.google.com/document/d/1FpdYNG02e9F_q3BaYQqJfkHEqwAdGHOzR0ts3PV3jOg/
 
 ## Description
 
-Ce tp est un pokédex.
+Ce tp est un pokédex uniquement compatible avec Firefox
+
+Un conseil, en le testant, mettez le son, vous aurez une surprise lorsque le pokémon se chargera!
 
 Il utilise une api : http://pokeapi.co/
 
